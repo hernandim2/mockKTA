@@ -1,0 +1,9 @@
+/.idea
+/target
+**/*.iml
+.DS_Store
+.classpath
+.project
+.settings/
+src/main/java/META-INF/
+src/main/java/com/

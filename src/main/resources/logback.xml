@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <contextName>Actualizar Estado CCB - KTA</contextName>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - taskID=%X{taskID}  -  %msg%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+      <providers>
+        <contextName>
+          <fieldName>app</fieldName>
+        </contextName>
+        <timestamp>
+          <fieldName>time</fieldName>
+        </timestamp>
+        <loggerName>
+          <fieldName>logger</fieldName>
+        </loggerName>
+        <logLevel>
+          <fieldName>level</fieldName>
+        </logLevel>
+        <callerData>
+          <classFieldName>class</classFieldName>
+          <methodFieldName>method</methodFieldName>
+          <lineFieldName>line</lineFieldName>
+          <fileFieldName>file</fileFieldName>
+        </callerData>
+        <threadName>
+          <fieldName>thread</fieldName>
+        </threadName>
+        <mdc />
+        <arguments>
+          <includeNonStructuredArguments>false</includeNonStructuredArguments>
+        </arguments>
+        <stackTrace>
+          <fieldName>stack</fieldName>
+        </stackTrace>
+        <message>
+          <fieldName>taskID</fieldName>
+          <fieldName>message</fieldName>
+        </message>
+      </providers>
+    </encoder>
+  </appender>
+  <root level="${LOGGING_LEVEL}">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="CONSOLE" />
+  </root>
+
+</configuration>
