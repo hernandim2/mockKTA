@@ -1,6 +1,6 @@
 package ar.com.edenor.ocp.service;
 
-import ar.com.edenor.ocp.model.MockKTADTO;
+import ar.com.edenor.ocp.model.*;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -16,7 +16,7 @@ public interface MockKtaService {
     @Path("/mockKTA")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    Response mockService(MockKTADTO mockKTADTO);
+    Response mockService(ModelRequestKta modelRequestKta);
 }
 
 

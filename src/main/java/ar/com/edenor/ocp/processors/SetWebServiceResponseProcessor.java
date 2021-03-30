@@ -26,8 +26,9 @@ public class SetWebServiceResponseProcessor extends BaseProcessor {
 	public void process(Exchange exchange)  {
 
 		MockKTARequestParamDTO mockKTARequestParamDTO =(MockKTARequestParamDTO)exchange.getIn().getBody();
-		mockKTARequestParamDTO.getEstado();
-		String jobId = mockKTARequestParamDTO.getJobid();
+
+		/*mockKTARequestParamDTO.getEstado();
+		String jobId = mockKTARequestParamDTO.getJobid();*/
 		MockKTARequestResponseDTO mockKTARequestResponseDTO = new MockKTARequestResponseDTO();
 
 	/*	if(jobId.equals("9611767697"))

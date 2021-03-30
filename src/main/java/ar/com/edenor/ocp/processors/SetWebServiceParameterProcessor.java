@@ -19,8 +19,8 @@ public class SetWebServiceParameterProcessor extends BaseProcessor {
 	public void process(Exchange exchange)  {
 
 		MockKTARequestParamDTO mockKTARequestParamDTO = new MockKTARequestParamDTO();
-		mockKTARequestParamDTO.setEstado("1919");
-		mockKTARequestParamDTO.setJobid("asdf");
+		/*mockKTARequestParamDTO.setEstado("1919");
+		mockKTARequestParamDTO.setJobid("asdf");*/
 		exchange.getOut().setBody(mockKTARequestParamDTO);
 		//exchange.getOut().setHeader("operationName",WS_MOCK_KTA_OPERATION_NAME);
 		//MockKTARequestParamDTO mockKTARequestParamDTO = (MockKTARequestParamDTO)exchange.getIn().getBody();
