@@ -25,18 +25,28 @@ public class SetWebServiceResponseProcessor extends BaseProcessor {
 	@Override
 	public void process(Exchange exchange)  {
 
-		MockKTARequestParamDTO mockKTARequestParamDTO =(MockKTARequestParamDTO)exchange.getIn().getBody();
+		MockKTARequestParamDTO mockKTARequestParamDTO = exchange.getIn().getBody(MockKTARequestParamDTO.class);
 
 		/*mockKTARequestParamDTO.getEstado();
 		String jobId = mockKTARequestParamDTO.getJobid();*/
 		MockKTARequestResponseDTO mockKTARequestResponseDTO = new MockKTARequestResponseDTO();
-
+		String jobid = mockKTARequestParamDTO.getJobInitialization().getInputVariablesArray().get(0).getValue();
 	/*	if(jobId.equals("9611767697"))
 		{*/
-			mockKTARequestResponseDTO.setCuenta("9611767697");
-			mockKTARequestResponseDTO.setStatusCode("500");
-			//exchange.getOut().setHeader(Exchange.HTTP_RESPONSE_CODE, 500);
-			exchange.getOut().setBody(mockKTARequestResponseDTO);
+
+		//C9FA778AB15341088D3869F6551DFC51 //Valido 8531229767
+
+		//83637892D377488A967708C3D671D338// no valido 8539577182
+		int statusCode = 500;
+		if(!jobid.equals("83637892D377488A967708C3D671D338"))
+		{
+			statusCode=200;
+		}
+		mockKTARequestResponseDTO.setCuenta(jobid);
+		mockKTARequestResponseDTO.setStatusCode(statusCode);
+		exchange.getOut().setHeader(Exchange.HTTP_RESPONSE_CODE, statusCode);
+		exchange.getOut().setHeader(Exchange.CONTENT_TYPE, "application/json");
+		exchange.getOut().setBody(mockKTARequestResponseDTO);
 		//}
 
 		//exchange.getOut().setBody(exchange.getIn().getBody());

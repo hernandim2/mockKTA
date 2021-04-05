@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class MockKTARequestResponseDTO {
     String cuenta;
-    String statusCode;
+    int statusCode;
 }
